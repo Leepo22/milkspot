@@ -1,0 +1,486 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  color: #ef6e50;
+  font-size: 1em;
+  font-weight: bold;
+}
+
+p {
+  color: #be202e;
+  font-size: 80%;
+  font-family: sans-serif;
+  font-weight: normal;
+  cursor: pointer;
+}
+
+p2 {
+  color: #be202e;
+  font-size: 110%;
+  font-family: sans-serif;
+  font-weight: bold;
+  cursor: pointer;
+  text-align: center;
+}
+
+
+/* unvisited link */
+a:link {
+    color: #be202e;
+}
+
+/* visited link */
+a:visited {
+    color: #be202e;
+}
+
+#map {
+  position: absolute;
+  width:100%; 
+  height:100%;  
+  top: 0;
+  left: 0;
+}
+.marker {
+  background-image: url('https://cdn.glitch.com/cb302176-cd8c-4e02-8c6e-6d0778f1bede%2FBottle%202c.svg?1522861631638');
+  background-size: cover;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.mapboxgl-popup {
+  max-width: 300px;
+  z-index: 10;
+  position: absolute;
+}
+
+.mapboxgl-popup-close-button {
+  content: "\F00d";
+  float: right;
+  font-family: FontAwesome;
+  position: relative;
+  color: #ef6e50;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.name {
+  color: #be202e;
+  font-size: 1.4em;
+  font-weight: bold;   
+}
+
+.address {
+  color: #fbb040;
+  font-size: 1em;
+  font-style: italic;   
+}
+
+.directions {
+  color: #fbb040;
+  font-size: 1em;
+  font-style: italic;   
+  margin-bottom: 10px;
+}
+
+.indoor {
+  color: #fbb040;
+  font-size: 1em;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.location_details {
+  color: #ef6e50;
+  font-size: 1em;
+  font-weight: normal;
+  margin-bottom: 10px;
+}
+
+.review {
+  color: #fbb040;
+  font-size: 1em; 
+  font-weight: normal;
+}
+
+.button-text {
+  color: #ffffff;
+  font-size: 1em;
+  font-weight: bold;   
+}
+
+#header-container {
+  position: absolute;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  z-index: 1;
+  pointer-events: none;
+}
+
+
+#logo {
+  position: fixed;
+  margin: 0.5em;
+  width: 35vw;
+  padding: 4px 4px 1px 4px;
+  max-width: 200px;
+  z-index: 2;
+  pointer-events: fill;
+  cursor: pointer;
+  background:rgba(255,255,255,0.75);
+  box-shadow: 0px 0px 0px 2px rgba(0,0,0,0.1);
+  border-width: 2px;
+  border-radius: 4px;
+  border-color: rgba(0,0,0,0.1);
+}
+
+#footer-container {
+  position: absolute;
+  width: 100%;
+  bottom: 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  z-index: 1;
+  pointer-events: none;
+}
+
+
+#submit-button {
+  position: relative;
+  margin: 0 auto;
+  width: 35vw;
+  padding: 7px;
+  max-width: 200px;
+  z-index: 2;
+  pointer-events: fill;
+  cursor: pointer;
+  background:rgba(255,255,255,0.75);
+  box-shadow: 0px 0px 0px 2px rgba(0,0,0,0.1);
+  border-width: 2px;
+  border-radius: 4px;
+  border-color: rgba(0,0,0,0.1);
+  display:flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.dialog-box {
+  position: relative;
+  top: 100px;
+  margin: 0 auto;
+  width: 50%;
+  max-width: 400px;
+  display:flex;
+  justify-content: space-between;
+  flex-direction: column;
+  background-color: #ffffff;
+  border-style: solid;
+  border-color: #ef6e50;
+  /* width: 80%; */
+  z-index: 20;
+  padding: 1em;
+  border-radius: 0.5em;
+  /* max-width: 30em; */
+  grid-row: 2/2;
+  grid-column: 2/2;
+}
+
+.dialog-text {
+  color: #be202e;
+  font-family: sans-serif;
+  font-size: 1.4em;
+  font-weight: bold; 
+}
+  
+  .row {
+  flex-direction: row;
+}
+
+.close-button:before {
+  content: "\F00d";
+  float: right;
+  font-family: FontAwesome;
+  position: relative;
+  color: #ef6e50;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.welcome-close:before {
+  content: "OK got it, thanks!";
+  color: #be202e;
+  font-family: sans-serif;
+  font-size: 1em;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+
+.thumbs-up:before {
+  content: "\f087";
+  font-family: FontAwesome;
+  position: relative;
+  color: #ef6e50;
+  font-size: 20px;
+  float: left;
+  margin-right: 0.2em;
+}
+
+.filter-logo:before {
+  content: "\f0b0";
+  font-family: FontAwesome;
+  position: fixed;
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  padding: 5px;
+  right: 5px;
+  top: 145px;
+  margin: 5px;
+  color: #be202e;
+  font-size: 21px;
+  z-index: 2;
+  cursor: pointer;
+}
+
+.filter-box {
+  position: fixed;
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  padding: 5px;
+  right: 5px;
+  top: 145px;
+  margin: 5px;
+  box-shadow: 0px 0px 0px 2px rgba(0,0,0,0.1);
+  border-width: 2px;
+  border-radius: 4px;
+  border-color: rgba(0,0,0,0.1);
+  background-color: #ffffff;
+  font-size: 21px;
+  z-index: 4;
+  cursor: pointer;
+}
+
+
+/* mouse over filter button*/
+.filter-box:hover {
+  background-color: #eee;
+}
+
+
+/* modal styling*/
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 11; /* Sit on top */
+    left: 0;
+    top: 0;  
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto; /* 5% from the top and centered */
+    padding: 20px;
+    width: 80%; /* Could be more or less, depending on screen size */
+    max-width: 400px;
+    border-style: solid;
+    border-color: #ef6e50;
+    border-radius: 0.5em;
+}
+
+/* The Modal (background) */
+.modal-category {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 12; /* Sit on top */
+    left: 0;
+    top: 0;  
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-category-content {
+    background-color: #fefefe;
+    margin: 5% auto; /* 5% from the top and centered */
+    padding: 20px;
+    width: 80%; /* Could be more or less, depending on screen size */
+    max-width: 400px;
+    border-style: solid;
+    border-color: #ef6e50;
+    border-radius: 0.5em;
+}
+
+
+
+/* Checkbox for modal */
+
+/* Customize the label (the container) */
+.container {
+  display: block;
+  position: relative;
+  top: 12px;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 20px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.container-text {
+  color: #be202e;
+  font-family: sans-serif;
+  font-size: 1em;
+}
+
+/* Hide the browser's default checkbox */
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  background-color: #eee;
+}
+
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a background */
+.container input:checked ~ .checkmark {
+  background-color: #be202e;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.container .checkmark:after {
+  left: 8px;
+  top: 3px;
+  width: 3px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+
+
+/* Checkbox for modal - small */
+
+/* Customize the label (the container) */
+.container-2 {
+  display: block;
+  position: relative;
+  top: 9px;
+  padding-left: 26.25px;
+  margin-bottom: 9px;
+  cursor: pointer;
+  font-size: 15px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.container-2-text {
+  color: #be202e;
+  font-family: sans-serif;
+  font-size: 1em;
+}
+
+/* Hide the browser's default checkbox */
+.container-2 input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Create a custom checkbox */
+.checkmark-2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 15px;
+  width: 15px;
+  background-color: #eee;
+}
+
+/* On mouse-over, add a grey background color */
+.container-2:hover input ~ .checkmark-2 {
+  background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a background */
+.container-2 input:checked ~ .checkmark-2 {
+  background-color: #be202e;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark-2:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.container-2 input:checked ~ .checkmark-2:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.container-2 .checkmark-2:after {
+  left: 6px;
+  top: 2.25px;
+  width: 2.25px;
+  height: 7.5px;
+  border: solid white;
+  border-width: 0 2.25px 2.25px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
