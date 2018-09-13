@@ -207,7 +207,8 @@
       var map = new mapboxgl.Map({
         container: 'map',
         style: 'mapbox://styles/mapbox/light-v9',
-        zoom: 10      
+        zoom: 12,
+        center: [-73.992289,40.742114]
       });
       
       
@@ -222,10 +223,6 @@
       
       // Add zoom and rotation controls to the map.
 map.addControl(new mapboxgl.NavigationControl());
-         
-      
-      
-      var bounds = new mapboxgl.LngLatBounds();
 
       function setMilkspotProperties(el, listing) {
         
@@ -260,7 +257,6 @@ map.addControl(new mapboxgl.NavigationControl());
         return el;
       }
       
-         
       
       // Import data from CSV to display as map items
       $.ajax({
@@ -276,32 +272,19 @@ map.addControl(new mapboxgl.NavigationControl());
           
           var lat = listing.lat;
           var lng = listing.lng;
-         // var anchor = new mapboxgl.Anchor('bottom')
           
           var popup = new mapboxgl.Popup().setHTML(getHTML(listing));
           popup.on('open', function(e) {
             ensureElementInViewport(e.target._container);
           });
           
-          new mapboxgl.Marker(el)//, {anchor: anchor})
+          new mapboxgl.Marker(el, {anchor: 'bottom'})
           .setLngLat([lng, lat])
           .setPopup(popup)
           .addTo(map);
-
-          bounds.extend([lng, lat]);
         });        
-        map.fitBounds(bounds, {
-          linear: true,
-          padding: 50, 
-          maxZoom: 40,
-        });
       });
             
-      
-      
-      
-      
-      
     </script>
   </body>
 </html>
