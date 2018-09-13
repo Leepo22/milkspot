@@ -45,11 +45,12 @@ a:visited {
   left: 0;
 }
 .marker {
-  background-image: url('https://cdn.glitch.com/cb302176-cd8c-4e02-8c6e-6d0778f1bede%2FBottle%202c%20copy.svg?1536612356472');
-  background-size: cover;
+  background-image: url('https://cdn.glitch.com/1d9f896c-bbc2-4a19-b424-f3b631b83689%2Fbottle_with_shadow.png?1536803911768');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
   width: 50px;
   height: 50px;
-  border-radius: 50%;
   cursor: pointer;
 }
 
