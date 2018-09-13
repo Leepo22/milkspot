@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Milkspot</title>
+    <link rel="shortcut icon" href="https://cdn.glitch.com/cb302176-cd8c-4e02-8c6e-6d0778f1bede%2Fboob%20favicon.png?1524190257227"/>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/styles.css">
+    <script src="/script.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="/jquery-csv/src/jquery.csv.js"></script>
+    <link href="https://api.mapbox.com/mapbox-gl-js/v0.45.0/mapbox-gl.css" rel="stylesheet"/>
+    <script src="https://api.mapbox.com/mapbox-gl-js/v0.45.0/mapbox-gl.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+  <body>
+    <div id="header-container">
+      <a href="https://www.milk-spot.com">
+        <div id="logo">
+          <img src="https://cdn.glitch.com/cb302176-cd8c-4e02-8c6e-6d0778f1bede%2Fmilkspot%20logo%202.svg?1524229816757" alt="milkspot logo">
+        </div>
+      </a>
+    </div> 
+    <div id="filter" class="filter-box" onclick="document.getElementById('myModal').style.display='block'; $('#welcome').hide()">
+      <div id="filter-logo" class="filter-logo"></div>
+      </div>
+    
+    <div id="footer-container">
+      <div id="submit-button" onclick="window.open('https://www.milk-spot.com/submitaspot','_blank');">
+        <p2>
+          Submit a spot
+        </p2>
+      </div>
+    </div>  
+  
+  
+    
+   <!-- <div id="welcome" class="dialog-box">
+      <div class="row">
+        <div class="close-button" onclick="$('#welcome').hide()"></div><br/><br/>
+        <center>
+          <div class="dialog-text">Welcome to the milkspot map</div> 
+        </center>
+      </div>
+      <br/>
+      <center>
+        <div class="welcome-close" onclick="$('#welcome').hide()"></div>
+      </center><br>
+    </div> -->
+
+    <div id="map">      
+    </div> 
+    
+  <!-- The Filter Modal -->
+  <div id="myModal" class="modal">
+
+     // <!-- Modal content -->
+    <div class="modal-content">
+      <div class="close-button" onclick="$('#myModal').hide()"></div>
+      <center><div class="dialog-text">Choose Amenities</div><br></center>
+      
+  
+          <label class="container">
+            <div class="container-text"><img width="40px" height="20px" title="Private space" src="https://cdn.glitch.com/cb302176-cd8c-4e02-8c6e-6d0778f1bede%2Fprivacy.png?1524620255821">      Private space</div>
+            <input type="checkbox"  name="amenities" id="is_private">
+            <span class="checkmark"></span>
+          </label>
+     
+          <label class="container">
+            <div class="container-text"><img width="20px" height="20px" title="Stroller friendly" src="https://cdn.glitch.com/cb302176-cd8c-4e02-8c6e-6d0778f1bede%2Fstroller.png?1523373320148">      Stroller friendly</div>
+            <input type="checkbox"  name="amenities"  id="is_stroller_friendly">
+            <span class="checkmark"></span> 
+          </label>
+              
+          <label class="container">
+            <div class="container-text"><img width="20px" height="20px" title="Changing facilities" src="https://cdn.glitch.com/cb302176-cd8c-4e02-8c6e-6d0778f1bede%2Fchanging.png?1523326260645">      Changing           facilities</div>
+            <input type="checkbox"  name="amenities" id="has_changing_table">
+            <span class="checkmark"></span>
+          </label>
+      
+          <label class="container">
+            <div class="container-text"><img width="20px" height="20px" title="Restrooms" src="https://cdn.glitch.com/cb302176-cd8c-4e02-8c6e-6d0778f1bede%2Frestroom.png?1524067547327">      Restrooms</div>
+            <input type="checkbox"  name="amenities" id="has_restroom">
+            <span class="checkmark"></span>
+          </label>
+      
+          <label class="container">
+            <div class="container-text"><img width="20px" height="20px" title="Water fountain" src="https://cdn.glitch.com/cb302176-cd8c-4e02-8c6e-6d0778f1bede%2Fwater.png?1523373354545">      Water fountain</div>
+            <input type="checkbox"  name="amenities" id="has_drinking_water">
+            <span class="checkmark"></span>
+          </label>
+      
+          <label class="container">
+            <div class="container-text"><img width="20px" height="20px" title="Outlet for pumping" src="https://cdn.glitch.com/cb302176-cd8c-4e02-8c6e-6d0778f1bede%2Foutlet.png?1523373416311">      Outlet for pumping</div>  
+            <input type="checkbox"  name="amenities" id="has_plugs">
+            <span class="checkmark"></span>
+          </label>
+      
+       <label class="container">
+            <div class="container-text"><img width="20px" height="20px" title="Dad friendly" src="https://cdn.glitch.com/1d9f896c-bbc2-4a19-b424-f3b631b83689%2Fmoustache%202c%20copy.png?1532096301628">      Dad friendly</div>  
+            <input type="checkbox"  name="amenities" id="is_dad_friendly">
+            <span class="checkmark"></span>
+          </label><br>
+      
+      
+      <div class="row">
+        
+               <label class="container">
+            <div class="container-text">Indoors</div>
+            <input type="checkbox" name="indoor" id="indoor_check">
+            <span class="checkmark"></span>
+          </label> 
+      
+        <label class="container">
+            <div class="container-text">Outdoors</div>
+            <input type="checkbox" name="indoor" id="outdoor_check">
+            <span class="checkmark"></span>
+        </label> </div><br>
+      
+    <div onclick="document.getElementById('myModalCategory').style.display='block';">
+      <p2> + additional filters</p2>
+      </div>
+      
+      
+      <center><p onclick="$('input[type=checkbox]').prop('checked',false);">Clear all filters</p></center>
+      <center><button style="margin: 0 auto; padding: 0.5em; background-color: #fbb040; border-radius: 30px; border: none; margin: 0.2em; cursor: pointer;" onclick="$('#myModal').hide(); filterAmenities()" class="button-text">Apply</button></center>
+      
+
+    </div>
+  </div>
+    
+    <!-- The Category Modal -->
+  <div id="myModalCategory" class="modal-category">
+
+     // <!-- Modal content -->
+    <div class="modal-category-content">
+      <div class="close-button" onclick="$('#myModalCategory').hide()"></div>
+      <center><div class="dialog-text">Choose Categories</div><br></center>
+            
+      <label class="container-2">
+            <div class="container-2-text">      Airport</div>  
+            <input type="checkbox"  name="categories" id="Airport">
+            <span class="checkmark-2"></span>
+          </label>
+      <label class="container-2">
+            <div class="container-2-text">      Coffee Shop</div>  
+            <input type="checkbox"  name="categories" id="Coffee_Shop">
+            <span class="checkmark-2"></span>
+          </label>
+      <label class="container-2">
+            <div class="container-2-text">      Food Court</div>  
+            <input type="checkbox"  name="categories" id="Food_Court">
+            <span class="checkmark-2"></span>
+          </label>
+      <label class="container-2">
+            <div class="container-2-text">      Indoor Open Space</div>  
+            <input type="checkbox"  name="categories" id="Indoor_Open_Space">
+            <span class="checkmark-2"></span>
+          </label>
+      <label class="container-2">
+            <div class="container-2-text">      Museum</div>  
+            <input type="checkbox"  name="categories" id="Museum">
+            <span class="checkmark-2"></span>
+          </label>
+      <label class="container-2">
+            <div class="container-2-text">      Park</div>  
+            <input type="checkbox"  name="categories" id="Park">
+            <span class="checkmark-2"></span>
+      </label>
+      <label class="container-2">
+            <div class="container-2-text">      Restaurant</div>  
+            <input type="checkbox"  name="categories" id="Restaurant">
+            <span class="checkmark-2"></span>
+          </label>
+      <label class="container-2">
+            <div class="container-2-text">      Store</div>  
+            <input type="checkbox"  name="categories" id="Store">
+            <span class="checkmark-2"></span>
+          </label>
+      <label class="container-2">
+            <div class="container-2-text">      Venue</div>  
+            <input type="checkbox"  name="categories" id="Venue">
+            <span class="checkmark-2"></span>
+          </label>
+       <label class="container-2">
+            <div class="container-2-text">      Other</div>  
+            <input type="checkbox"  name="categories" id="Other">
+            <span class="checkmark-2"></span>
+          </label><br>
+      
+      <center><p onclick="$('input[name=categories]').prop('checked',false);">Clear all categories</p></center>
+      <center><p onclick="$('input[name=categories]').prop('checked',true);">Choose all categories</p></center>
+      
+      <center><button style="margin: 0 auto; padding: 0.5em; background-color: #fbb040; border-radius: 30px; border: none; margin: 0.2em; cursor: pointer;" onclick="$('#myModalCategory').hide();" class="button-text">OK</button></center>
+      
+    </div>
+    </div>
+    
+    <script> 
+
+      
+      // Display a Mapbox map
+      mapboxgl.accessToken = 'pk.eyJ1IjoibGVlcG8yMiIsImEiOiJjamprcHhpODYwaWlnM3BxdnRvaGsxYjZ2In0.Rud_OeSXZOCH8O9e5KFp3A';
+
+      // Details on the Mapbox API here: https://www.mapbox.com/mapbox-gl-js/api/#map
+      var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/light-v9',
+        zoom: 10      
+      });
+      
+      
+      // Add geolocate control to the map.
+      map.addControl(new mapboxgl.GeolocateControl({
+    positionOptions: {
+        enableHighAccuracy: true
+    }, 
+    trackUserLocation: true      
+}));
+      
+      
+      // Add zoom and rotation controls to the map.
+map.addControl(new mapboxgl.NavigationControl());
+         
+      
+      
+      var bounds = new mapboxgl.LngLatBounds();
+
+      function setMilkspotProperties(el, listing) {
+        
+        // this is the place to pull in the category - in this function, you're looping over every data point in the CSV row (name, address, etc, and eventually all the amenities), and the category is another one of those data points. You don't want it to be set to true/false though, so you can do it in a slightly different section. 
+        Object.entries(listing).forEach(function(property) {
+          var property_names = [
+            "is_indoor",
+            "is_outdoor",
+            "is_private",
+            "is_stroller_friendly",
+            "has_changing_table",
+            "has_restroom",
+            "has_drinking_water",
+            "has_plugs",
+            "is_dad_friendly",
+            "category",
+            ];
+                    
+          if (property_names.includes(property[0])) {
+            if (property[1] == "TRUE")  {
+                el.className += " " + property[0] ;
+            }
+          };
+          
+          // FYI this works! but you can massively simplify it by making the if statement "property[0] == "category" - because that's the value of the column name here. This actually wouldn't work if you had another heading in your data that also had values that were the same as these ones (e.g. if you decided add a "next_to" value to show that it's next to an airport or something - bad feature, but just to illustrate why this isn't optimal)
+            if ((property[1] == "Airport") || (property[1] == "Coffee_Shop") || (property[1] == "Food_Court") || (property[1] == "Indoor_Open_Space") || (property[1] == "Museum") || (property[1] == "Other") || (property[1] == "Park") || (property[1] == "Restaurant") || (property[1] == "Venue") || (property[1] == "Store")) {
+               el.className += " " + property[1];
+            };
+          // I'd add it in here. You can add an if statement checking if the property is equal to "category", and if it is then pull out the category value. If the name "property" is weird to you, you can rename it something more generic like "field" or "datapoint", and then rename "property_names" to something like "amenities". Then you'll just want to check whether the datapoint name (currently property[0]) is equal to "category", and if so then save the value (currently property[1]) to the milkspot.
+          // you also need to choose how you want to represent the category on the milkspot. you could do something like adding a class name like category-park or category-mall? and then check for that class when filtering.
+        });
+        return el;
+      }
+      
+         
+      
+      // Import data from CSV to display as map items
+      $.ajax({
+        type: "GET",
+        url: "https://cdn.glitch.com/1d9f896c-bbc2-4a19-b424-f3b631b83689%2FMilkspot%20Points%20of%20Interest%20-%20Data.csv?1533157198544"
+      })
+      .then(function(csv) {
+        var data = $.csv.toObjects(csv);
+        data.forEach(function(listing) {
+          var el = document.createElement('div');
+          el.className = 'marker';
+          el = setMilkspotProperties(el, listing);
+          
+          var lat = listing.lat;
+          var lng = listing.lng;
+         // var anchor = new mapboxgl.Anchor('bottom')
+          
+          var popup = new mapboxgl.Popup().setHTML(getHTML(listing));
+          popup.on('open', function(e) {
+            ensureElementInViewport(e.target._container);
+          });
+          
+          new mapboxgl.Marker(el)//, {anchor: anchor})
+          .setLngLat([lng, lat])
+          .setPopup(popup)
+          .addTo(map);
+
+          bounds.extend([lng, lat]);
+        });        
+        map.fitBounds(bounds, {
+          linear: true,
+          padding: 50, 
+          maxZoom: 40,
+        });
+      });
+            
+      
+      
+      
+      
+      
+    </script>
+  </body>
+</html>
