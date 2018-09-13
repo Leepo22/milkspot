@@ -217,3 +217,10 @@ var ensureElementInViewport = function(el) {
     map.easeTo({center: newCenter});
   }
 }
+
+
+
+
+
+
+// try turning all these functions into one function, filterPlaces, which takes in the element that you clicked, and pulls out its ID. I googled "pass element into onClick function" and got this: https://stackoverflow.com/questions/19998711/how-to-pass-this-element-to-javascript-onclick-function-and-add-a-class-to-that which should help you do this
